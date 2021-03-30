@@ -13,7 +13,7 @@ export class RegistrationComponent  implements OnInit{
 
   registrationForm: FormGroup;
   usersList: any;
-  msgTrue: boolean;
+  msgTrue: boolean | undefined;
   UserService: any;
   constructor(public service: UserService, private formbuilder: FormBuilder) {
 
@@ -21,8 +21,8 @@ export class RegistrationComponent  implements OnInit{
     this.registrationForm = this.formbuilder.group({
     
       userName: ['', Validators.required],
-      Email: ['', Validators.required.Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)]],
-      Password: ['', Validators.requiredValidators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{6,}')]],,],
+      Email: ['', Validators.required,Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)],
+      Password: ['', Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{6,}')],
       confirmPassword: ['', Validators.required]
     });
   }
@@ -32,22 +32,22 @@ export class RegistrationComponent  implements OnInit{
     });
   }
 
-  addNewUsers(){
+  addNewUsers(form: { value: { id: any; userName: any; Email: any; Password: any; confirmPassword: any; }; }){
     //mock the form data that we will get from the form 
 
     
-const newFormData= {id:8,userName:'sabina',Email:'sabina@123',
-  Password:'samsung',confirmPassword:'samsung'};
+// const newFormData= {id:8,userName:'sabina',Email:'sabina@123',
+//   Password:'samsung',confirmPassword:'samsung'};
   
 
-// const newFormData= {id:form.value.id,userName:form.value.userName,Email:form.value.Email,
-//   Password:form.value.Password,confirmPassword:form.value.confirmPassword};
+const newFormData= {id:form.value.id,userName:form.value.userName,Email:form.value.Email,
+  Password:form.value.Password,confirmPassword:form.value.confirmPassword};
  
-// console.log(form.value.id);
-// console.log(form.value.userName);
-// console.log(form.value.Email);
-// console.log(form.value.Password);
-// console.log(form.value.confirmPassword);
+console.log(form.value.id);
+console.log(form.value.userName);
+console.log(form.value.Email);
+console.log(form.value.Password);
+console.log(form.value.confirmPassword);
 
 this.service.createUsers(newFormData).subscribe(data=>{
   console.log(data);

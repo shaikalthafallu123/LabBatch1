@@ -17,7 +17,7 @@ getusers(){
   return this.httpClient.get('http://localhost:3000/users');
 }
 
-createUsers(createBody){
+createUsers(createBody: { id: any; userName: any; Email: any; Password: any; confirmPassword: any; }){
  return this.httpClient.post('http://localhost:3000/users',createBody);
 }
 
