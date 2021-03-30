@@ -8,9 +8,9 @@ import { UserService } from 'src/app/shared/user.service';
 })
 export class UserComponent {
 
-  userName:string;
-  service: any;
-  msgTrue: boolean;
+  // userName:string;
+  // service: any;
+  // msgTrue: boolean;
 
   constructor(private userService:UserService) { }
 // userList:any;
