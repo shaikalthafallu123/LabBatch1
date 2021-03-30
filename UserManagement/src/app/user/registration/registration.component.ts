@@ -32,7 +32,7 @@ export class RegistrationComponent  implements OnInit{
     });
   }
 
-  addNewUsers(form: { value: { id: any; userName: any; Email: any; Password: any; confirmPassword: any; }; }){
+  addNewUsers(form: { value: { id: 0; userName: 'alluthaf'; Email: 'allu@123'; Password: 'allu'; confirmPassword: 'allu'; }; }){
     //mock the form data that we will get from the form 
 
     
